@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/app', function () {
     return view('usuario.index');
 });
+
+Route::get('/action', function () {
+    return view('usuario.action');
+});
