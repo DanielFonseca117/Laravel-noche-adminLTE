@@ -23,7 +23,7 @@
                                                 <i class="fas fa-search"></i>
                                                 Buscar
                                             </button>
-                                            <a href="" class="btn btn-primary">
+                                            <a href="{{ route('usuarios.create') }}" class="btn btn-primary">
                                                 Nuevo
                                             </a>
                                         </div>
@@ -45,7 +45,7 @@
                                     <tbody>
                                         @if (count($registros) <= 0)
                                             <tr>
-                                                <td colspan="4">No hay registros que coincidan con la busqueda</td>
+                                                <td colspan="4">No hay3 registros que coincidan con la busqueda</td>
                                             </tr>
                                         @else
                                             @foreach ($registros as $registro)
@@ -77,13 +77,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-end">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                            </ul>
+                            {{ $registros->appends(["texto"=>$texto]) }}
                         </div>
                     </div>
                     <!-- /.card -->
@@ -95,3 +89,11 @@
         <!--end::Container-->
     </div>
 @endsection
+
+<!---->
+@push('scripts')
+    <script>
+        document.getElementById('menuSeguridad').classList.add('menu-open');
+        document.getElementById('itemUsuario').classList.add('active');
+    </script>
+@endpush
