@@ -77,7 +77,7 @@
                                 </table>
                             </div>
                         </div>
-                        <!-- /.card-body -->
+                        <!-- /.card-body --> 
                         <div class="card-footer clearfix">
                             {{ $registros->appends(['texto' => $texto]) }}
                         </div>
