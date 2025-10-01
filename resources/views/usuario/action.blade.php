@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="password" class="form-label">Password</label>
-                                        <input type="text" class="form-control @error('password') is-invalid @enderror" value="{{old('password')}}" id="password" name="password" required>
+                                        <input type="text" class="form-control @error('password') is-invalid @enderror" value="{{old('password', $registro->password ??'')}}" id="password" name="password" required>
                                         @error('password')
                                         <small class="text-danger">{{$message}}</small>
                                         @enderror
@@ -75,7 +75,7 @@
 @endsection
 @push('scripts')
     <script>
-        document.getElementById('mnuSeguridad').classList.add('menu-open');
+        document.getElementById('menuSeguridad').classList.add('menu-open');
         document.getElementById('itemUsuario').classList.add('active');
     </script>
 @endpush

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class UserRequest extends FormRequest
 {
     /**
@@ -22,7 +23,7 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:100',
+            'name' => ['required', 'regex:/^[a-zA-Z\s]+$/', 'max:100'],
             'email' => 'required|email|unique:users,email,' . $this->route('usuario'),
             'password' => 'required|min:8',
         ];
@@ -31,7 +32,7 @@ class UserRequest extends FormRequest
         return [
             'name.required' => 'El campo nombre es obligatorio.',
             'name.string' => 'El campo nombre debe ser una cadena de texto.',
-            'name.max' => 'El campo nombre no puede superar los 255 caracteres.',
+            'name.max' => 'El campo nombre no puede superar los 100 caracteres.',
 
             'email.required' => 'El campo correo electrónico es obligatorio.',
             'email.email' => 'Debe ingresar un correo electrónico válido.',

@@ -14,11 +14,11 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $texto=$request->input('texto');
-        $registros=User::where('name', 'like', "%{$texto}%" )
-                    ->orWhere('email', 'like', "%{$texto}%")
-                    ->orderBy('id', 'desc')
-                    ->paginate(10);
-                    return view('usuario.index', compact('registros', 'texto'));
+        $registros=User::where('name','like','%'.$texto.'%')
+            ->orWhere('email','like','%'.$texto.'%')
+            ->orderBy('id','desc')
+            ->paginate(10);
+        return view('usuario.index',compact('registros','texto'));
     }
 
     /**
@@ -32,7 +32,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $registro=new User();
         $registro->name=$request->input('name');

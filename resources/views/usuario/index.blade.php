@@ -45,13 +45,13 @@
                                     <tbody>
                                         @if (count($registros) <= 0)
                                             <tr>
-                                                <td colspan="4">No hay3 registros que coincidan con la busqueda</td>
+                                                <td colspan="4">No hay registros que coincidan con la busqueda</td>
                                             </tr>
                                         @else
                                             @foreach ($registros as $registro)
                                                 <tr class="align-middle">
                                                     <td>
-                                                        <a href="" class="btn btn-warning btn-sm">
+                                                        <a href="{{ route('usuarios.edit', $id) }}" class="btn btn-warning btn-sm">
                                                             <i class="bi bi-pencil-fill"></i>
                                                         </a>
                                                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
@@ -63,7 +63,8 @@
                                                     <td>{{ $registro->name }}</td>
                                                     <td>{{ $registro->email }}</td>
                                                     <td>
-                                                        <span class="badge {{ $registro->activo ? 'bg-success' : 'bg-danger' }}">
+                                                        <span
+                                                            class="badge {{ $registro->activo ? 'bg-success' : 'bg-danger' }}">
                                                             {{ $registro->activo ? 'Activo' : 'Inactivo' }}
                                                         </span>
                                                     </td>
@@ -77,7 +78,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            {{ $registros->appends(["texto"=>$texto]) }}
+                            {{ $registros->appends(['texto' => $texto]) }}
                         </div>
                     </div>
                     <!-- /.card -->
@@ -90,7 +91,6 @@
     </div>
 @endsection
 
-<!---->
 @push('scripts')
     <script>
         document.getElementById('menuSeguridad').classList.add('menu-open');

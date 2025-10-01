@@ -12,10 +12,10 @@
     <!--end::Accessibility Meta Tags-->
     <!--begin::Primary Meta Tags-->
     <meta name="title" content="Panel de Control" />
-    <meta name="author" content="DanielSFM" />
+    <meta name="author" content="Carlos Abs" />
     <meta
       name="description"
-      content="Panel de Control de mi Sistema"
+      content="Panel de Control de mi sistema"
     />
     <meta
       name="keywords"
@@ -62,14 +62,10 @@
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
-
-        @include('plantilla.header')
-
+      @include('plantilla.header')
       <!--end::Header-->
       <!--begin::Sidebar-->
-
-        @include('plantilla.menu')
-
+      @include('plantilla.menu')
       <!--end::Sidebar-->
       <!--begin::App Main-->
       <main class="app-main">
@@ -77,15 +73,13 @@
         <div class="app-content-header">
           <!--begin::Container-->
           <div class="container-fluid">
-            <!--begin::Row-->
-            
-            <!--end::Row-->
+
           </div>
           <!--end::Container-->
         </div>
         <!--end::App Content Header-->
         <!--begin::App Content-->
-        @yield('contenido')
+         @yield('contenido')
         <!--end::App Content-->
       </main>
       <!--end::App Main-->
