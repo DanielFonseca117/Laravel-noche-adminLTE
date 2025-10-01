@@ -81,7 +81,7 @@ class UserController extends Controller
     {
         $registro=User::findOrFail($id);
         $registro->delete();
-        return redirect()->route('usuarios.index')->with('mensaje', $registro->name. ' eliminado satisfactoriamente.');
+        return redirect()->route('usuarios.index')->with('mensaje', 'Registro '.$registro->name. ' eliminado satisfactoriamente.');
     }
 
     public function toggleStatus(User $usuario){

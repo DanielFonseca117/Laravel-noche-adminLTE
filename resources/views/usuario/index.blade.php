@@ -51,11 +51,11 @@
                                             @foreach ($registros as $registro)
                                                 <tr class="align-middle">
                                                     <td>
-                                                        <a href="{{ route('usuarios.edit', $id) }}" class="btn btn-warning btn-sm">
+                                                        <a href="{{ route('usuarios.edit', $registro->id) }}" class="btn btn-warning btn-sm">
                                                             <i class="bi bi-pencil-fill"></i>
                                                         </a>
-                                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#modal-eliminar-01">
+                                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" 
+                                                            data-bs-target="#modal-eliminar-{{ $registro->id }}">
                                                             <i class="bi bi-trash-fill"></i>
                                                         </button>
                                                     </td>
@@ -69,8 +69,9 @@
                                                         </span>
                                                     </td>
                                                 </tr>
+                                                @include('usuario.delete')
                                             @endforeach
-                                            @include('usuario.delete')
+                                            
                                         @endif
                                     </tbody>
                                 </table>
