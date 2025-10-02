@@ -17,7 +17,7 @@
                             <div>
                                 <form action="" method="get">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Ingresa tu texto a buscar">
+                                        <input type="text" name="texto" class="form-control" value="{{ $texto }}" placeholder="Ingresa tu texto a buscar">
                                         <div class="input-groupt-append">
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="fas fa-search"></i>
@@ -31,11 +31,19 @@
                                 </form>
                             </div>
 
+                            @if(Session::has('mensaje'))
+                            <div class="alert alert-info alert-dismissible fade show mt-2">
+                                {{Session::get('mensaje')}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" 
+                                aria-label="close"></button>
+                            </div>
+                            @endif
+
                             <div class="table-responsive mt-3">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th style="width: 100px">Opciones</th>
+                                            <th style="width: 130px">Opciones</th>
                                             <th style="width: 20px">ID</th>
                                             <th>Nombre</th>
                                             <th>Email</th>
@@ -51,12 +59,16 @@
                                             @foreach ($registros as $registro)
                                                 <tr class="align-middle">
                                                     <td>
-                                                        <a href="{{ route('usuarios.edit', $registro->id) }}" class="btn btn-warning btn-sm">
+                                                        <a href="{{ route('usuarios.edit', $registro->id) }}" class="btn btn-info btn-sm">
                                                             <i class="bi bi-pencil-fill"></i>
                                                         </a>
                                                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal" 
                                                             data-bs-target="#modal-eliminar-{{ $registro->id }}">
                                                             <i class="bi bi-trash-fill"></i>
+                                                        </button>
+                                                        <button class="btn {{ $registro->activo ? 'btn-success'  : 'btn-warning' }} btn-sm" 
+                                                            data-bs-toggle="modal" data-bs-target="#modal-toggle-{{$registro->id}}">
+                                                            <i class="bi {{$registro->activo ? 'bi-check-circle' : 'bi-ban'}}"></i>
                                                         </button>
                                                     </td>
                                                     <td>{{ $registro->id }}</td>
